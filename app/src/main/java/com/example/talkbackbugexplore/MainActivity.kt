@@ -74,16 +74,17 @@ fun Toolbar() {
 @Composable
 fun Pager(modifier: Modifier = Modifier) {
     val state = rememberPagerState { 5 }
-    HorizontalPager(
-        state = state,
-        modifier = modifier.semantics {
-            collectionInfo = CollectionInfo(
-                columnCount = 5,
-                rowCount = COLUMN_CAPACITY
-            )
+    Box(modifier = modifier.semantics {
+        collectionInfo = CollectionInfo(
+            columnCount = 5,
+            rowCount = COLUMN_CAPACITY
+        )
+    }) {
+        HorizontalPager(
+            state = state,
+        ) {
+            PagerContent(it)
         }
-    ) {
-        PagerContent(it)
     }
 }
 
